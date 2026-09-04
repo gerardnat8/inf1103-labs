@@ -38,5 +38,4 @@ print("======================")
 print("Username:", username)
 print("Age:", age)
 print("Category: ", category)
-
-
+print("======================")
