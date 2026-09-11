@@ -13,9 +13,14 @@ while True:
     user_input = input("Enter stock quantity: ").strip()
 
     if user_input.lower() == "quit":
-        print("/nLeaving system due to user command.")
+        print("Leaving system due to user command.")
         break
 
     if not user_input.isdigit():
-        if user_input.startswith('-') and user_input[1:].isdigit():
+            if user_input.startswith('-') and user_input[1:].isdigit():
+                 print("Input Error: Negative numbers are not allowed.")
+
+            else:
+                 print("Input Error: Only integers are allowed.")
+            
 
