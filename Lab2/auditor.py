@@ -23,7 +23,13 @@ while True:
                  print(f"Input Error: {user_input} is not a valid integer.")
             failed_entries += 1
             continue 
-   
+
+    quantity = int(user_input)
+    total_inventories += quantity
+    print(f"Success: Added {quantity} to total inventory. Current total: {total_inventories}")
+    
+
+
 
             
 
