@@ -4,7 +4,7 @@ print("=============================")
 
 total_inventories = 0
 
-failed_inventories = 0 
+failed_entries = 0 
 
 print("Smart Inventory Auditor Initialised")
 print("Enter stock quantities to add. Type 'quit' to exit.\n")
@@ -19,8 +19,11 @@ while True:
     if not user_input.isdigit():
             if user_input.startswith('-') and user_input[1:].isdigit():
                  print("Input Error: Negative numbers are not allowed.")
-
             else:
-                 print("Input Error: Only integers are allowed.")
+                 print(f"Input Error: {user_input} is not a valid integer.")
+            failed_entries += 1
+            continue 
+   
+
             
 
