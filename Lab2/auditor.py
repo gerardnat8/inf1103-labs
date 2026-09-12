@@ -13,7 +13,7 @@ while True:
     user_input = input("Enter stock quantity: ").strip()
 
     if user_input.lower() == "quit":
-        print("Leaving system due to user command.")
+        print("Leaving system due to user command.\n")
         break
 
     if not user_input.isdigit():
@@ -27,6 +27,21 @@ while True:
     quantity = int(user_input)
     total_inventories += quantity
     print(f"Success: Added {quantity} to total inventory. Current total: {total_inventories}")
+
+    if total_inventories > 500:
+         print(f"\nTotal units {total_inventories} has exceeded the maximum of 500")
+         print("Loop has terminated due to overstock. ")
+         break 
+    elif total_inventories == 500:
+         print(f"\nTotal units {total_inventories} is at maximum capacity\n")
+    else:
+         pass
+        
+
+
+        
+
+
     
 
 
