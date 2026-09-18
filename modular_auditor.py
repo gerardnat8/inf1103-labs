@@ -4,7 +4,6 @@ print("=============================")
 
     
 def get_valid_input():
-    # Prompt once. Return an int, the string 'quit', or None if invalid.
     user_input = input("Enter stock quantity: ").strip()
  
     if user_input.lower() == "quit":
@@ -20,15 +19,12 @@ def get_valid_input():
     return int(user_input)
 
 def process_delivery(current_total, new_value):
-    # Add the new delivery to the running total and return the new total.
     return current_total + new_value
 
 def calculate_tax(amount):
-    # return 10% tax on a delivery amount 
     return amount * 0.10
 
 def generate_report(total_units, failed_attempts):
-    # Print the final summary.
     print("\n" + "=" * 38)
     print("FINAL AUDIT METRICS REPORT")
     print("=" * 38)
