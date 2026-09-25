@@ -85,6 +85,7 @@ def main():
  
         quantity = result
         total_inventories = process_delivery(total_inventories, quantity)
+        transaction_history.append(quantity)
         tax = calculate_tax(quantity)
         total_tax += tax
         deliveries_processed += 1
