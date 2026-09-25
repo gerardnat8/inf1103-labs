@@ -1,7 +1,39 @@
 print("=============================")
-print('New Smart Inventory Auditor')
+print('Persistent Smart Inventory Auditor')
 print("=============================")
 
+
+INVENTORY_FILE = "inventory.txt"
+ 
+ 
+def load_inventory():
+    """
+    Reads previously saved inventory data from INVENTORY_FILE.
+    Returns (total, history) where total is an int and history is a list of ints.
+    If the file does not exist, returns (0, []) with no error.
+    """
+    total = 0
+    history = []
+ 
+    try:
+        with open(INVENTORY_FILE, "r") as f:
+            lines = f.readlines()
+ 
+        if lines:
+            total = int(lines[0].strip())
+ 
+            if len(lines) > 1 and lines[1].strip():
+                history = [int(x) for x in lines[1].strip().split(",")]
+ 
+        print(f"Loaded saved inventory: total={total}, transactions={len(history)}\n")
+ 
+    except FileNotFoundError:
+        print("No previous inventory file found. Starting fresh.\n")
+        total = 0
+        history = []
+ 
+    return total, history
+ 
     
 def get_valid_input():
     user_input = input("Enter stock quantity: ").strip()
@@ -32,7 +64,7 @@ def generate_report(total_units, failed_attempts):
     print("=" * 38 + "\n")
 
 def main():
-    total_inventories = 0
+    total_inventories, transaction_history = load_inventory()
     total_tax = 0
     failed_entries = 0
     deliveries_processed = 0
