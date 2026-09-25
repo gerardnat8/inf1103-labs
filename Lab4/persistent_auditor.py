@@ -9,17 +9,18 @@ INVENTORY_FILE = "inventory.txt"
 def load_inventory():
     total = 0
     history = []
- 
+
     try:
         with open(INVENTORY_FILE, "r") as f:
             lines = f.readlines()
- 
+
         if lines:
-            total = int(lines[0].strip())
- 
-            if len(lines) > 1 and lines[1].strip():
-                history = [int(x) for x in lines[1].strip().split(",")]
- 
+            total = int(lines[0].replace("Total:", "").strip())
+
+            if len(lines) > 1 and lines[1].replace("History:", "").strip():
+                history_part = lines[1].replace("History:", "").strip()
+                history = [int(x) for x in history_part.split(",")]
+
         print("\nCurrent Inventory:")
         print(f"Running Total: {total}\n")
         if history:
@@ -27,24 +28,22 @@ def load_inventory():
             for i, amount in enumerate(history, start=1):
                 print(f"{i}. {amount}")
         print()
- 
+
     except FileNotFoundError:
         print("No previous inventory file found. Starting fresh.\n")
         total = 0
         history = []
- 
+
     return total, history
  
 def save_inventory(total, history):
     """
     Writes the final total and transaction history list to INVENTORY_FILE.
-    Line 1: total
-    Line 2: comma-separated transaction history
     """
     with open(INVENTORY_FILE, "w") as f:
-        f.write(f"{total}\n")
-        f.write(",".join(str(x) for x in history) + "\n")
- 
+        f.write(f"Total: {total}\n")
+        f.write(f"History: {','.join(str(x) for x in history)}\n")
+
     print("\nInventory successfully saved to inventory.txt")
 
 def get_valid_input():
