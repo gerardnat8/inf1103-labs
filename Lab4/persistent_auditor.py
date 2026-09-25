@@ -7,11 +7,6 @@ INVENTORY_FILE = "inventory.txt"
  
  
 def load_inventory():
-    """
-    Reads previously saved inventory data from INVENTORY_FILE.
-    Returns (total, history) where total is an int and history is a list of ints.
-    If the file does not exist, returns (0, []) with no error.
-    """
     total = 0
     history = []
  
@@ -25,7 +20,13 @@ def load_inventory():
             if len(lines) > 1 and lines[1].strip():
                 history = [int(x) for x in lines[1].strip().split(",")]
  
-        print(f"Loaded saved inventory: total={total}, transactions={len(history)}\n")
+        print("\nCurrent Inventory:")
+        print(f"Running Total: {total}\n")
+        if history:
+            print("Past Transactions:")
+            for i, amount in enumerate(history, start=1):
+                print(f"{i}. {amount}")
+        print()
  
     except FileNotFoundError:
         print("No previous inventory file found. Starting fresh.\n")
@@ -34,7 +35,18 @@ def load_inventory():
  
     return total, history
  
-    
+def save_inventory(total, history):
+    """
+    Writes the final total and transaction history list to INVENTORY_FILE.
+    Line 1: total
+    Line 2: comma-separated transaction history
+    """
+    with open(INVENTORY_FILE, "w") as f:
+        f.write(f"{total}\n")
+        f.write(",".join(str(x) for x in history) + "\n")
+ 
+    print("\nInventory successfully saved to inventory.txt")
+
 def get_valid_input():
     user_input = input("Enter stock quantity: ").strip()
  
@@ -101,6 +113,7 @@ def main():
         elif total_inventories == 500:
             print(f"\nTotal units {total_inventories} is at maximum capacity\n")
  
+    save_inventory(total_inventories, transaction_history) 
     generate_report(total_inventories, failed_entries)
     print(f"Deliveries Processed: {deliveries_processed}")
     print(f"Total Tax Collected: {total_tax:.2f}\n")
