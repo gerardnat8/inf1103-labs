@@ -62,5 +62,24 @@ def load_inventory():
     print("Inventory loaded successfully.")
     return inventory
 
+def update_stock(inventory, product_id, new_stock):
+    """Set the stock of an existing product. Returns True if updated."""
+    product = find_product(inventory, product_id)
+    if product is None:
+        print("Product not found.")
+        return False
+
+    product["stock"] = new_stock
+    print("Stock updated successfully!")
+    return True
+
+
+def search_product(inventory, product_id):
+    """Return the matching product dictionary, or None if not found."""
+    return find_product(inventory, product_id)
+
 inventory = load_inventory()
-display_all(inventory)
+update_stock(inventory, "P002", 50)
+update_stock(inventory, "P999", 5)
+print(search_product(inventory, "P002"))
+print(search_product(inventory, "P999"))
