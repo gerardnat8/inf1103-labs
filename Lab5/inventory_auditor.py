@@ -32,6 +32,11 @@ def load_inventory():
         total = 0
         history = []
 
+    except (json.JSONDecodeError, KeyError, TypeError, ValueError):
+        print("Inventory file could not be read. Starting fresh.\n")
+        total = 0
+        history = []
+
     return total, history
  
 def save_inventory(total, history):
