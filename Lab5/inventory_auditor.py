@@ -14,14 +14,10 @@ def load_inventory():
 
     try:
         with open(INVENTORY_FILE, "r") as f:
-            lines = f.readlines()
+            data = json.load(f)
 
-        if lines:
-            total = int(lines[0].replace("Total:", "").strip())
-
-            if len(lines) > 1 and lines[1].replace("History:", "").strip():
-                history_part = lines[1].replace("History:", "").strip()
-                history = [int(x) for x in history_part.split(",")]
+        total = int(data["total"])
+        history = [int(x) for x in data["history"]]
 
         print("\nCurrent Inventory:")
         print(f"Running Total: {total}\n")
