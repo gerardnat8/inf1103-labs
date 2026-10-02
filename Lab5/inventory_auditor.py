@@ -1,7 +1,3 @@
-print("=============================")
-print('Persistent Smart Inventory Auditor')
-print("=============================")
-
 import json
 import os
 
@@ -82,6 +78,10 @@ def generate_report(total_units, failed_attempts):
     print("=" * 38 + "\n")
 
 def main():
+    print("\n=============================")
+    print('Persistent Smart Inventory Auditor')
+    print("=============================")
+
     total_inventories, transaction_history = load_inventory()
     total_tax = 0
     failed_entries = 0
@@ -124,6 +124,7 @@ def main():
     print(f"Deliveries Processed: {deliveries_processed}")
     print(f"Total Tax Collected: {total_tax:.2f}\n")
 
-main()
+if __name__ == "__main__":
+    main()
             
 
