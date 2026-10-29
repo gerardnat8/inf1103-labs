@@ -32,3 +32,27 @@ class Product:
  
     def get_stock(self):
         return self.__stock
+
+
+    # ----- behaviour -----
+    def update_stock(self, quantity):
+        """Set the stock to a new level. Returns True if accepted, False if invalid."""
+        if not self.__is_valid_quantity(quantity):
+            return False
+        self.__stock = quantity
+        return True
+ 
+    def display_information(self):
+        """Print this product on one line (used when listing every product)."""
+        print(f"ID: {self.__product_id} | Name: {self.__name} | "
+              f"Price: ${self.__price:.2f} | Stock: {self.__stock}")
+ 
+    def display_details(self):
+        """Print this product as a detailed block (used by Search)."""
+        print("-" * 48)
+        print(f"ID: {self.__product_id}")
+        print(f"Name: {self.__name}")
+        print(f"Price: ${self.__price:.2f}")
+        print(f"Stock: {self.__stock}")
+        print("-" * 48)
+ 
