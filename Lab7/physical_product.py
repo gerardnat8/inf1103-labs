@@ -14,6 +14,9 @@ class PhysicalProduct(Product):
     def get_weight(self):
         return self.__weight
 
+    def get_fulfilment_info(self):
+        return "Physical product: packed in the warehouse and shipped to the customer."
+
     def display_information(self):
         """Parent prints the common line, then this class adds the weight."""
         super().display_information()
@@ -23,3 +26,4 @@ class PhysicalProduct(Product):
         """Parent prints the common block, then this class adds the weight."""
         super().display_details()
         print(f"Weight: {self.__weight:.2f} kg")
+        print(f"Fulfilment: {self.get_fulfilment_info()}")

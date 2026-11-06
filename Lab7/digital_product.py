@@ -14,6 +14,9 @@ class DigitalProduct(Product):
     def get_download_size(self):
         return self.__download_size
 
+    def get_fulfilment_info(self):
+        return "Digital product: delivered to the customer as a download."
+
     def display_information(self):
         """Parent prints the common line, then this class adds the download size."""
         super().display_information()
@@ -23,3 +26,4 @@ class DigitalProduct(Product):
         """Parent prints the common block, then this class adds the download size."""
         super().display_details()
         print(f"Download Size: {self.__download_size:.2f} MB")
+        print(f"Fulfilment: {self.get_fulfilment_info()}")
