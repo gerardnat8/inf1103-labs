@@ -1,0 +1,8 @@
+*
+!*.py
+!*/
+!.gitignore
+!inventory.json
+!uml_class_diagram.png
+!uml_class_diagram.md
+__pycache__/
