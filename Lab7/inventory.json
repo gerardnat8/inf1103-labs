@@ -1,0 +1,18 @@
+[
+    {
+        "type": "physical",
+        "id": "G1",
+        "name": "Piano",
+        "price": 3000.0,
+        "stock": 1,
+        "weight": 300.0
+    },
+    {
+        "type": "digital",
+        "id": "G2",
+        "name": "Operating system",
+        "price": 100.0,
+        "stock": 100,
+        "download_size": 4300.0
+    }
+]
